@@ -5,7 +5,7 @@ const regionCodes = REGIONS.map((r) => r.code) as [string, ...string[]];
 
 export const planRequestSchema = z
   .object({
-    region: z.enum(regionCodes),
+    region: z.enum(regionCodes, { errorMap: () => ({ message: "Choose a valid region" }) }),
     batteryKwh: z.coerce.number().min(10).max(200),
     chargerKw: z.coerce.number().min(1.4).max(22),
     currentPercent: z.coerce.number().int().min(0).max(100),
@@ -30,5 +30,5 @@ export const vehicleSchema = z.object({
   name: z.string().trim().min(1, "Give your car a name").max(40),
   batteryKwh: z.coerce.number().min(10).max(200),
   chargerKw: z.coerce.number().min(1.4).max(22),
-  region: z.enum(regionCodes),
+  region: z.enum(regionCodes, { errorMap: () => ({ message: "Choose a valid region" }) }),
 });
