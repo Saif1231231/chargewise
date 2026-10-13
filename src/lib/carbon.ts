@@ -1,6 +1,6 @@
 import type { Slot } from "./planner";
 
-const API = "https://api.carbonintensity.org.uk";
+const API = process.env.CARBON_API_URL ?? "https://api.carbonintensity.org.uk";
 
 type RegionalResponse = {
   data: { data: { from: string; to: string; intensity: { forecast: number } }[] };

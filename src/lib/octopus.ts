@@ -1,6 +1,6 @@
 import type { Slot } from "./planner";
 
-const API = "https://api.octopus.energy/v1";
+const API = process.env.OCTOPUS_API_URL ?? "https://api.octopus.energy/v1";
 
 // Agile product codes change when Octopus launches a new version (e.g. AGILE-24-10-01),
 // so look up whichever one is currently on sale instead of hard-coding it.
